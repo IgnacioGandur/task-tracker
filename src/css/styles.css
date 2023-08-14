@@ -1,0 +1,886 @@
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&family=Quicksand:wght@300;400;500;600;700&family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root 
+{
+    --main-font:'Quicksand', sans-serif;
+    --secondary-font: 'Ubuntu Mono', monospace;
+    --third-font:'Poiret One', cursive;
+    --color-grey:#6B717E;
+    --color-semi-transparent-grey:#a4b2d0a7;
+    --average-value:10px;
+    --border: 1px solid (var(--color-grey));
+    --transition: all 200ms ease-in-out;
+}
+
+.theme-light
+{
+    --color-primary:#90e0ef;
+    --color-primary-semi-transparent:#90e0ef70;
+    --color-secondary:#f8f9fa;
+    --color-secondary-2:#f5f5f5;
+    --color-accent:#c77dff;
+    --color-accent-semi-transparent:#c77dff47;
+    --color-border:#adb5bd71;
+    --font-color:#6c757d;    
+    --background: linear-gradient(30deg, #9b5de5,#f15bb5,#fee440,#00bbf9,#00f5d4);
+}
+.theme-dark
+{
+    --color-primary:#ff70a6;
+    --color-primary-semi-transparent:#ff70a640;
+    --color-secondary:#212529;
+    --color-secondary-2:#49505724;
+    --color-accent:#70d6ff;
+    --color-accent-semi-transparent:#70d6ff57;
+    --color-border:#e9ecef2b;
+    --font-color:#fafafa;
+    --background: linear-gradient(30deg, #482b6b,#78305b,#8e8026,#006587,#00b79f);
+}
+
+*, *::after, *::before
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    color:var(--font-color);
+    transition:all 500ms ease;
+}
+
+::-webkit-scrollbar
+{
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: transparent;
+    border: 1px solid var(--color-semi-transparent-grey);
+    border-radius: var(--average-value);
+}
+
+body
+{
+    background-image:var(--background);
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-evenly;
+}
+
+div#app
+{
+    background-color: var(--color-secondary);
+    width: 95%;
+    height: 95%;
+    display:flex;
+    gap:var(--average-value);
+    border-radius:var(--average-value);
+    padding:var(--average-value);
+    overflow: auto;
+}
+
+div#app > aside#left, main#main, aside#right
+{
+    border-radius:var(--average-value);
+    overflow:auto;
+}
+
+div#app > aside#left, aside#right
+{
+    background-color: var(--color-secondary-2);
+    border:1px solid var(--color-border);
+}
+
+input, select, option
+{
+    height: 2.75rem;
+    background-color:transparent;
+    font-size:1rem;
+    font-family:var(--main-font);
+    color:var(--font-color);
+    border-radius:var(--average-value);
+    border:1px solid var(--color-border);
+    padding:var(--average-value);
+    outline:none;
+    transition:var(--transition);
+    resize: none;
+}
+
+input:hover, select:hover, option:hover
+{
+    background-color: var(--color-primary-semi-transparent);
+    border: 1px solid var(--color-primary);
+    scale:1.02;
+}
+
+input:focus, option:focus, select:focus
+{
+    background-color:var(--color-accent-semi-transparent);
+    border:1px solid var(--color-accent);
+    color:var(--font-color);
+}
+
+button
+{
+    background-color:transparent;
+    background-image:linear-gradient(135deg, transparent, transparent, transparent, transparent, var(--color-primary),var(--color-primary),var(--color-primary),var(--color-primary),var(--color-primary)); 
+    background-size:500%;
+    background-position: left bottom;
+    background-repeat:no-repeat;
+    border: 1px solid var(--color-border);
+    padding: var(--average-value);
+    border-radius: var(--average-value);
+    color: var(--font-color);
+    font-family:var(--secondary-font);
+    transition:all 500ms ease;
+}
+
+button:hover
+{
+    background-size: 200%;
+    background-position:right top;
+    border:1px solid var(--color-border);
+    color:var(--color-secondary) !important;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+button:active
+{
+scale: 0.95;
+}
+
+option
+{
+    background-color: var(--color-secondary);
+    color:var(--font-color);
+}
+
+.material-icons-round, img
+{
+    -webkit-user-drag: none;
+    user-drag:none;
+    -webkit-user-select: none;
+    user-select: none;
+    -moz-user-select: none;
+    transition: var(--transition);
+    cursor:pointer;
+}
+
+/*                                      Aside left, start.                                   */
+.active
+{
+    background-color:var(--color-primary-semi-transparent);
+    border:1px solid var(--color-primary);
+}
+
+div#app aside#left
+{
+    flex: 0 0 360px;
+    display:flex;
+    flex-direction:column;
+    padding:var(--average-value);
+    gap: var(--average-value);
+}
+
+div#app aside#left *
+{
+    color:var(--font-color);
+}
+
+div#app aside#left h4
+{
+    font-family:var(--secondary-font);
+    color: var(--font-color);
+    display:flex;
+    align-items:baseline;
+    justify-content:flex-start;
+    
+}
+
+div#app aside#left label
+{
+    font-family:var(--secondary-font);
+    font-size:.9rem;
+}
+
+div#app aside#left div.projects-container
+{
+    flex:1 0 auto;
+    display:flex;
+    flex-direction:column;
+    border-radius:var(--average-value);
+    gap: var(--average-value);
+}
+
+div#app aside#left div.projects-container div.project
+{
+    display:flex;
+    flex-direction:column;
+    border:1px solid var(--color-border);
+    border-radius:var(--average-value);
+    padding: var(--average-value);
+    font-family:var(--secondary-font);
+    transition:var(--transition);
+    gap:var(--average-value);
+}
+
+div#app aside#left div.projects-container div.project:hover
+{
+    background-color: var(--color-primary-semi-transparent);
+    border:1px solid var(--color-primary);
+    cursor: pointer;
+    scale: 1.04;
+}
+
+div#app aside#left div.projects-container div.project div.title
+{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap:var(--average-value);
+}
+
+div#app aside#left div.projects-container div.project div.title span
+{
+    font-size:1.25rem;
+    transition: var(--transition);
+}
+
+div#app aside#left div.projects-container div.project div.title span:hover
+{
+    scale:1.5;
+}
+
+div#app aside#left div.projects-container div.project div.edit-title
+{
+    background-color:var(--color-secondary);
+    display:flex;
+    flex-direction:column;
+    gap: var(--average-value);
+    padding:var(--average-value);
+    border:1px solid var(--color-border);
+    border-radius:var(--average-value);
+}
+
+div#app aside#left div.separator
+{
+    height: 1px;
+    background-color:var(--color-border);
+}
+
+div#app aside#left div.user-info
+{
+    display:flex;
+    flex-direction:column;
+    gap: var(--average-value);
+    border: 1px solid var(--color-border);
+    border-radius:var(--average-value);
+    padding:var(--average-value);
+}
+
+div#app aside#left div.user-info div.visible
+{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:var(--average-value);
+    border:1px solid var(--color-border);
+    border-radius:var(--average-value);
+    font-family:var(--secondary-font);
+    color:var(--font-color);
+}
+
+div#app aside#left div.user-info div.visible span.material-icons-round:first-of-type
+{
+    font-size:1.9rem;
+}
+
+div#app aside#left div.user-info div.visible span.material-icons-round:hover
+{
+    scale:1.2;
+}
+
+div#app aside#left div.user-info div.visible span.material-icons-round:active
+{
+    scale:0.8;
+}
+
+div#app aside#left div.user-info div.invisible
+{
+    display:flex;
+    flex-direction:column;
+    gap:var(--average-value);
+}
+
+div#app aside#left div.theme-switcher
+{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+div#app aside#left div.theme-switcher p
+{
+    color:var(--font-color);
+    font-family:var(--secondary-font);
+}
+
+div#app aside#left div.theme-switcher label#switch.switch
+{
+    scale: .8;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 40px;
+  width: 40px;
+  left: 0px;
+  bottom: 4px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  box-shadow: 0 0px 15px #2020203d;
+  background: white url('https://i.ibb.co/FxzBYR9/night.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+input:checked + .slider {
+  background-color: var(--color-primary);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--color-primary-semi-transparent);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  transform: translateX(24px);
+  background: white url('https://i.ibb.co/7JfqXxB/sunny.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+div#app aside#left div.today-date-container
+{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    padding: var(--average-value);
+    border-radius:var(--average-value);
+    border:1px solid var(--color-border);
+}
+
+div#app aside#left div.today-date-container p
+{
+    font-family: var(--secondary-font);
+}
+
+/*                                      Aside left, end.                                   */
+/*                                      Main, start.                                   */
+div#app main#main 
+{
+    flex: 5 0 600px;
+    display:flex;
+    flex-direction:column;
+    gap: var(--average-value);
+}
+
+div#app main#main h1 
+{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+}
+
+div#app main#main div.project-header
+{
+    display:flex;
+    justify-content:center;
+    border:1px solid var(--color-primary-semi-transparent);
+    border-radius:var(--average-value);
+    padding:var(--average-value);
+}
+
+div#app main#main div.project-header h3
+{
+    font-family:var(--third-font);
+    font-size:2rem;
+    font-weight:900;
+    text-transform:capitalize;
+}
+
+div#app main#main div.project-header span.title
+{
+    font-size:1.75rem;
+    font-family:var(--third-font);
+    font-weight:900;
+    letter-spacing:1px;
+    text-transform: capitalize;
+}
+
+div#app main#main div.tasks-container
+{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(400px, 1fr));
+    gap:var(--average-value);
+}
+
+div#app main#main div.tasks-container div.card
+{
+    height:fit-content;
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    align-items:stretch;
+    border:1px solid var(--color-primary-semi-transparent);
+    padding:var(--average-value);
+    border-radius:var(--average-value);
+    gap:var(--average-value);
+}
+
+div#app main#main div.tasks-container div.card div.paragraphs-line
+{
+    display:flex;
+    flex-direction:column;
+    gap: var(--average-value);
+}
+
+div#app main#main div.tasks-container div.card div.paragraphs-line > div
+{
+    display:flex;
+    flex-direction:column;
+    gap: var(--average-value);
+    border: 1px solid var(--color-border);
+    padding:var(--average-value);
+    border-radius:var(--average-value);
+}
+
+div#app main#main div.tasks-container div.card div.paragraphs-line > div > div.visible
+{
+    display:flex;
+    align-items:center;
+    gap: var(--average-value);
+}
+
+
+div#app main#main div.tasks-container div.card div.paragraphs-line > div > div.visible p
+{
+    margin-right:auto;
+    font-family:var(--secondary-font);
+    color:var(--font-color);
+    word-break: break-all;
+}
+
+div#app main#main div.tasks-container div.card div.paragraphs-line > div > div.visible p strong
+{
+    color:var(--color-primary);
+}
+
+div#app main#main div.tasks-container div.card div.paragraphs-line > div > div.visible span
+{
+    font-size: 1.5rem;
+    transition: all 300ms linear;
+}
+
+div#app main#main div.tasks-container div.card div.paragraphs-line > div > div.visible span:hover
+{
+    scale:1.3;
+    rotate:360deg;
+    cursor:pointer;
+}
+
+div#app main#main div.tasks-container div.card div.paragraphs-line > div div.visible span:active
+{
+    scale: 0.9;
+}
+
+div#app main#main div.tasks-container div.card div.paragraphs-line > div > div.invisible
+{
+    display: flex;
+    flex-direction:column;
+    gap:var(--average-value);
+}
+
+div#app main#main div.tasks-container div.card div.icons-line 
+{
+    display:flex;
+    border:1px solid var(--color-border);
+    padding:var(--average-value);
+    border-radius:var(--average-value);
+    gap:var(--average-value);
+}
+
+div#app main#main div.tasks-container div.card div.icons-line > div
+{
+    flex-grow:1;
+    display: flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items:center;
+    border: 1px solid var(--color-border);
+    padding: var(--average-value);
+    border-radius: var(--average-value);
+    gap:var(--average-value);
+    transition: var(--transition);
+}
+
+div#app main#main div.tasks-container div.card div.icons-line > div:hover
+{
+    cursor:pointer;
+    scale:1.1;
+}
+
+div#app main#main div.tasks-container div.card div.icons-line > div > img
+{
+    width: 40px;
+    height: 40px;
+}
+
+div#app main#main div.tasks-container div.card div.icons-line > div > i
+{
+    font-weight:900;
+    font-family:var(--secondary-font)
+}
+
+div#app main#main div.tasks-container div.card div.icons-line > div > span.material-icons-round
+{
+    font-size:2.75rem;
+}
+
+div#app main#main div.tasks-container div.card div.edit.priority
+{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:var(--average-value);
+}
+
+div#app main#main div.tasks-container div.card div.edit.tag
+{
+    flex-direction:column;
+    gap: var(--average-value);
+}
+
+div#app main#main div.tasks-container div.card div.edit.tag div.buttons
+{
+    display:flex;
+    flex-direction:column;
+    gap: var(--average-value);
+}
+
+div#app main#main div[data-section="empty-section"]
+{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-grow:1;
+}
+
+div#app main#main div[data-section="empty-section"] img
+{
+    width: 350px;
+}
+
+/*                                      Main, end.                                            */
+/*                                      Aside right, start.                                   */
+div#app aside#right
+{
+    flex:1 0 375px;
+    display:flex;
+    flex-direction:column;
+    padding:var(--average-value);
+    gap:var(--average-value);
+}
+
+div#app aside#right h2
+{
+    font-family:var(--third-font);
+    color: var(--font-color);
+}
+
+div#app aside#right form
+{
+    flex-grow:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-evenly;
+    gap: var(--average-value);
+}
+
+div#app aside#right form label
+{
+    display:flex;
+    align-items:flex-end;
+    font-family:var(--secondary-font);
+    color: var(--font-color);
+    gap:var(--average-value);
+}
+
+div#app aside#right form label > span.asterisk
+{
+    color:red;
+}
+
+div#app aside#right form label i 
+{
+    margin-left:auto;
+    font-size:.85rem;
+}
+
+div#app aside#right form div.tags-container, div.edit-tags-container
+{
+    display:flex;
+    flex-wrap:wrap;
+    gap:var(--average-value);
+}
+
+div#app aside#right form div.tags-container > div, div.edit-tags-container > div
+{
+    display:flex;
+    flex-direction:column;
+    flex-grow:1;
+}
+
+div#app aside#right form div.tags-container div label.tag-label, div.edit-tags-container div label.tag-label
+{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border:1px solid var(--color-border);
+    border-radius:var(--average-value);
+    padding:var(--average-value);
+    user-select: none;
+    -webkit-user-select: none;
+    transition:var(--transition);
+    font-family:var(--main-font);
+    font-size:1rem;
+    color:var(--font-color);
+    gap:calc(var(--average-value)/2);
+}
+
+div#app aside#right form div.tags-container div label.tag-label:hover, div.edit-tags-container div label.tag-label:hover
+{
+    background-color: var(--color-primary-semi-transparent);
+    border: 1px solid var(--color-primary);
+    scale:1.02;
+    transform: translateY(-5px);
+    cursor:pointer;
+}
+
+div#app aside#right form div.tags-container div label.tag-label:active, div.edit-tags-container div label.tag-label:active
+{
+    transform: translateY(10px);
+}
+
+div#app aside#right form div.tags-container div input[type="radio"], div.edit-tags-container div input[type="radio"]
+{
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    position:fixed;
+    opacity:0;
+}
+
+div#app aside#right form div.tags-container div input[type="radio"]:checked + label.tag-label, div.edit-tags-container div input[type="radio"]:checked + label.tag-label
+{
+    background-color: var(--color-accent-semi-transparent);
+    border: 1px solid var(--color-accent);
+}
+
+div#app aside#right form div.tags-container div span.material-icons-round, div.edit-tags-container div span.material-icons-round
+{
+    font-size:2.25rem;
+    transition:var(--transition);
+}
+
+div#app aside#right form div.tags-container div span.material-icons-round:hover, div.edit-tags-container div span.material-icons-round:hover
+{
+    scale:1.2;
+}
+
+div#app aside#right form div.tags-container div label.tag-label span.text, div.edit-tags-container div label.tag-label span.text
+{
+    font-size:1rem;
+    font-family:var(--secondary-font);
+    color: var(--font-color);
+}
+
+div#app aside#right form div.status-container
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+div#app aside#right form div.status-container p
+{
+    font-family:var(--secondary-font);
+    color:var(--font-color);
+}
+
+div#app aside#right form div.status-container div.checkbox-wrapper-5
+{
+    scale: .75;
+}
+
+/*                                      Status checkbox styling.                                 */
+.checkbox-wrapper-5 .check {
+    --size: 40px;
+    position: relative;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primary));
+    line-height: 0;
+    perspective: 400px;
+    font-size: var(--size);
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"],
+.checkbox-wrapper-5 .check label,
+.checkbox-wrapper-5 .check label::before,
+.checkbox-wrapper-5 .check label::after,
+.checkbox-wrapper-5 .check {
+    appearance: none;
+    display: inline-block;
+    border-radius: var(--size);
+    border: 0;
+    transition: .35s ease-in-out;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.checkbox-wrapper-5 .check label {
+    width: calc(2.2 * var(--size));
+    height: var(--size);
+    background: #d7d7d7;
+    overflow: hidden;
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"] {
+    position: absolute;
+    z-index: 1;
+    width: calc(.8 * var(--size));
+    height: calc(.8 * var(--size));
+    top: calc(.1 * var(--size));
+    left: calc(.1 * var(--size));
+    background: linear-gradient(45deg, #dedede, #ffffff);
+    box-shadow: 0 6px 7px rgba(0,0,0,0.3);
+    outline: none;
+    margin: 0;
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"]:checked {
+    left: calc(1.3 * var(--size));
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"]:checked + label {
+    background: transparent;
+}
+
+.checkbox-wrapper-5 .check label::before,
+.checkbox-wrapper-5 .check label::after {
+    content: "· ·";
+    position: absolute;
+    overflow: hidden;
+    left: calc(.15 * var(--size));
+    top: calc(.5 * var(--size));
+    height: var(--size);
+    letter-spacing: calc(-0.04 * var(--size));
+    color: #9b9b9b;
+    font-family: "Times New Roman", serif;
+    z-index: 2;
+    font-size: calc(.6 * var(--size));
+    border-radius: 0;
+    transform-origin: 0 0 calc(-0.5 * var(--size));
+    backface-visibility: hidden;
+}
+
+.checkbox-wrapper-5 .check label::after {
+    content: "●";
+    top: calc(.65 * var(--size));
+    left: calc(.2 * var(--size));
+    height: calc(.1 * var(--size));
+    width: calc(.35 * var(--size));
+    font-size: calc(.2 * var(--size));
+    transform-origin: 0 0 calc(-0.4 * var(--size));
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::before,
+.checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::after {
+    left: calc(1.55 * var(--size));
+    top: calc(.4 * var(--size));
+    line-height: calc(.1 * var(--size));
+    transform: rotateY(360deg);
+}
+
+.checkbox-wrapper-5 .check input[type="checkbox"]:checked + label::after {
+    height: calc(.16 * var(--size));
+    top: calc(.55 * var(--size));
+    left: calc(1.6 * var(--size));
+    font-size: calc(.6 * var(--size));
+    line-height: 0;
+}
+/*                                      Aside right, end.                                   */
+
+div.author
+{
+    position: fixed;
+    top: 10%;
+    left: -100px;
+    rotate: 90deg;
+    backdrop-filter: blur(20px);
+    border:1px solid var(--color-secondary);
+    padding:var(--average-value);
+    border-radius:var(--average-value);
+}
+
+div.author p 
+{
+    font-family:var(--secondary-font);
+    color: var(--color-secondary);
+    transition: all 1000ms ease;
+}
