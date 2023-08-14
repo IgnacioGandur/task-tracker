@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css" data-calendar-theme>
+    <title>Task Tracker App | Ignacio Gandur</title>
+<link rel="icon" href="assets/favicon.png"><script defer src="bundle.js?a470abb2554ac0a4ab89"></script></head>
+<body>
+    <div id="app">
+        <aside id="left">
+            <h4>Create a new project</h4>
+            <input type="text" id="project-title" maxlength="100">
+            <button data-create-project>Create a new project</button>
+            <div class="separator"></div>
+            <h4><span data-user-name-projects>User</span>&nbsp;projects</h4>
+            <div class="projects-container" data-user-projects-container></div>
+            <div class="separator"></div>
+            <div class="theme-switcher">
+                <p>Switch theme color</p>
+                <label id="switch" class="switch">
+                    <input type="checkbox" onchange="toggleTheme()" id="slider">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="user-info">
+                <div class="visible">
+                    <span class="material-icons-round user-color" data-user-color>face</span>
+                    <span data-user-name>Ignacio Gandur</span>
+                    <span class="material-icons-round" data-edit-user-name>edit</span>
+                </div>
+                <div class="invisible" data-edit-name-section style="display:none;">
+                    <input type="text" id="new-user-name" maxlength="100" placeholder="Enter the new user name.">
+                    <button data-change-user-name-button>Change user name</button>
+                    <button data-hide-edit-user-name>Cancel edit</button>
+                </div>
+            </div>
+            <div class="today-date-container">
+                <p data-today-date></p>
+            </div>
+        </aside>
+        <main id="main">
+            <div class="project-header">
+                <h3 data-title="">Select or create a project.</h3>
+            </div>
+            <div class="tasks-container" data-tasks-container data-section="empty-section">
+            </div>
+        </main>
+        <aside id="right">
+            <h2>Create a new task</h2>
+            <form action="" data-create-task>
+                <label for="task-title">Title <span class="asterisk">*</span><i>(100 Characters max.)</i></label>
+                <input type="text" id="task-title" maxlength="100" required>
+                <label for="task-description">Description <span class="asterisk">*</span><i>(100 Characters max.)</i></label>
+                <input type="text" id="task-description" maxlength="100" required>
+                <label for="task-due-date">Due Date <span class="asterisk">*</span><i>(Required)</i></label>
+                <input type="datetime-local" id="task-due-date" placeholder="Click to open the calendar." required>
+                <label for="task-priority">Priority <span class="asterisk">*</span><i>(Required)</i></label>
+                <select name="task-priority" id="task-priority" required>
+                    <option value="" selected disabled hidden>Pick task priority</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+                <label for="task-notes">Notes<i>(100 Characters max.)</i></label>
+                <input type="text" id="task-notes" maxlength="100">
+                <label for="task-tag">Tag <span class="asterisk">*</span><i>(Required)</i></label>
+                <div class="tags-container">
+                    <div>
+                        <input type="radio" name="tag" value="home" id="home" required>
+                        <label for="home" class="tag-label">
+                            <span class="material-icons-round">home</span>
+                            <span class="text">Home</span>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" name="tag" value="work" id="work">
+                        <label for="work" class="tag-label">
+                            <span class="material-icons-round">work</span>
+                            <span class="text">Work</span>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" name="tag" value="family" id="family">
+                        <label for="family" class="tag-label">
+                            <span class="material-icons-round">diversity_1</span>
+                            <span class="text">Family</span>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" name="tag" value="friends" id="friends">
+                        <label for="friends" class="tag-label">
+                            <span class="material-icons-round">diversity_2</span>
+                            <span class="text">Friends</span>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" name="tag" value="pets" id="pets">
+                        <label for="pets" class="tag-label">
+                            <span class="material-icons-round">pets</span>
+                            <span class="text">Pets</span>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" name="tag" value="gym" id="gym">
+                        <label for="gym" class="tag-label">
+                            <span class="material-icons-round">fitness_center</span>
+                            <span class="text">Gym</span>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" name="tag" value="me" id="me">
+                        <label for="me" class="tag-label">
+                            <span class="material-icons-round">face</span>
+                            <span class="text">Me</span>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" name="tag" value="sports" id="sports">
+                        <label for="sports" class="tag-label">
+                            <span class="material-icons-round">sports_soccer</span>
+                            <span class="text">Sports</span>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" name="tag" value="food" id="food">
+                        <label for="food" class="tag-label">
+                            <span class="material-icons-round">lunch_dining</span>
+                            <span class="text">Food</span>
+                        </label>
+                    </div>
+                    <div>
+                        <input type="radio" name="tag" value="others" id="others">
+                        <label for="others" class="tag-label">
+                            <span class="material-icons-round">pending</span>
+                            <span class="text">Others</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="status-container">
+                    <p>Is the task completed?</p>
+                    <div class="checkbox-wrapper-5">
+                        <div class="check">
+                            <input id="check-5" type="checkbox">
+                            <label for="check-5"></label>
+                        </div>
+                    </div>
+                </div>
+                <button>Create task</button>
+            </form>
+        </aside>
+    </div>
+    <div class="author">
+        <p>Create by Ignacio Gandur.</p>
+    </div>
+</body>
+</html>
