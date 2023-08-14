@@ -43,7 +43,6 @@
     padding:0;
     box-sizing:border-box;
     color:var(--font-color);
-    transition:all 500ms ease;
 }
 
 ::-webkit-scrollbar
@@ -584,6 +583,7 @@ div#app main#main div.tasks-container div.card div.icons-line > div > img
 div#app main#main div.tasks-container div.card div.icons-line > div > i
 {
     font-weight:900;
+    text-transform: capitalize;
     font-family:var(--secondary-font)
 }
 
@@ -882,5 +882,4 @@ div.author p
 {
     font-family:var(--secondary-font);
     color: var(--color-secondary);
-    transition: all 1000ms ease;
 }

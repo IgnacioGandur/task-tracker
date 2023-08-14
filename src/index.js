@@ -473,7 +473,7 @@ const MF_ =
                     <div class="edit tag" style="display:none;" data-edit-task-tag-${i}>
                         <div class="edit-tags-container">
                             <div>
-                                <input type="radio" name="edit-tag-${i}" value="home" id="edit-home-${i}" required>
+                                <input type="radio" name="edit-tag-${i}" value="home" id="edit-home-${i}" required checked>
                                 <label for="edit-home-${i}" class="tag-label">
                                     <span class="material-icons-round">home</span>
                                     <span class="text">Home</span>
@@ -566,17 +566,33 @@ const MF_ =
     {
         let projectIndex = document.querySelector('.active').getAttribute('data-project');
         let newValue = document.querySelector(`#new-task-${prop}-${index}`).value;
-        userProjects[projectIndex].tasks[index][prop] = newValue;
-        this.renderTasks(projectIndex);
-        localStorage.setItem('UserProjects', JSON.stringify(userProjects));
+        if (newValue === '')
+        {
+            alert(`The new ${prop === 'dueDate' ? 'due date' : prop} can't be empty.`)
+            return;
+        }
+        else
+        {
+            userProjects[projectIndex].tasks[index][prop] = newValue;
+            this.renderTasks(projectIndex);
+            localStorage.setItem('UserProjects', JSON.stringify(userProjects));
+        }
     },
     saveEditedTaskTag(index)
     {
         let projectIndex = document.querySelector('.active').getAttribute('data-project');
         let newTag = document.querySelector(`input[name="edit-tag-${index}"]:checked`).value;
-        userProjects[projectIndex].tasks[index].tag = newTag;
-        this.renderTasks(projectIndex);
-        localStorage.setItem('UserProjects', JSON.stringify(userProjects));
+        if (newTag === '')
+        {
+            alert('The new tag can\'t be empty.')
+            return;
+        }
+        else
+        {   
+            userProjects[projectIndex].tasks[index].tag = newTag;
+            this.renderTasks(projectIndex);
+            localStorage.setItem('UserProjects', JSON.stringify(userProjects));
+        }
     },
     toggleTaskStatus(index)
     {
